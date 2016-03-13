@@ -1,0 +1,32 @@
+.event-list {
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.event-list > li {
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0px 0px 5px rgb(51, 51, 51);
+    box-shadow: 0px 0px 5px rgba(51, 51, 51, 0.7);
+    padding: 0px;
+    margin: 0px 0px 20px;
+}
+.event-list > li > img {
+    width: 100%;
+}
+.list-select-btn{
+    vertical-align: bottom;
+    /* col-md */
+    /*margin-top:50px;*/
+    /* col-xs */
+    margin-top:20px;
+}
+@media only screen 
+and (max-width : 900px) {
+  /* Styles */
+  .list-select-btn{
+    margin-top:0px;
+  }
+  h2.title{
+    margin-top: 15px;
+  }
+}

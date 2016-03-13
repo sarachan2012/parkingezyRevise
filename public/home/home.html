@@ -1,0 +1,81 @@
+<div id="header" class="blog-masthead" style="margin-bottom: 20px;">
+    <div class="container">
+        <nav class="blog-nav text-center">
+            <a class="blog-nav-item" href="#"><img src="assets/img/logo.png" class="logo"></a>
+        </nav>
+    </div>
+</div>
+<div id="content" class="container">
+    <div class="center-block custom-block" style="margin-top: 30px;">
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <div class="icon-wrapper" style="margin-bottom:20px;">
+                    <i class="fa fa-car custom-icon">
+                        <span class="fix-editor">&nbsp;</span>
+                        </i>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <div class="combobox-container">
+                    <select id="from" class="combobox form-control">
+                        <option>From</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="NY">New York</option>
+                        <option value="MD">Maryland</option>
+                        <option value="VA">Virginia</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <div class="combobox-container">
+                    <select id="to" class="combobox form-control">
+                        <option>Destination</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="NY">New York</option>
+                        <option value="MD">Maryland</option>
+                        <option value="VA">Virginia</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group">
+                <div class="combobox-container">
+                    <select id="time" class="combobox form-control">
+                        <option>Now</option>
+                        <option value="PA">Pennsylvania</option>
+                        <option value="CT">Connecticut</option>
+                        <option value="NY">New York</option>
+                        <option value="MD">Maryland</option>
+                        <option value="VA">Virginia</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 form-group text-center">
+                <button class="btn btn-success btn-block" id="search" ng-click="homeCtrl.beginSearch()"> BEGIN </button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /container -->
+<footer id="footer" class="footer">
+    <div class="container">
+        <p>© 2016 ParkingEZY, Inc.</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#from').combobox();
+        $('#to').combobox();
+        $('#time').combobox();
+    });
+</script>
