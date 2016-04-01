@@ -11,60 +11,67 @@
             <div class="col-xs-12 text-center">
                 <div class="icon-wrapper" style="margin-bottom:20px;">
                     <i class="fa fa-car custom-icon">
-                        <span class="fix-editor">&nbsp;</span>
-                        </i>
+                            <span class="fix-editor">&nbsp;</span>
+                            </i>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 form-group">
-                <div class="combobox-container">
-                    <select id="from" class="combobox form-control">
-                        <option>From</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="NY">New York</option>
-                        <option value="MD">Maryland</option>
-                        <option value="VA">Virginia</option>
-                    </select>
+        <form name="searchForm" novalidate>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <div class="combobox-container">
+                        <input type="text" class="combobox form-control" placeholder="From" g-places-autocomplete ng-model="homeCtrl.from" name="fromInput" required>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 form-group">
-                <div class="combobox-container">
-                    <select id="to" class="combobox form-control">
-                        <option>Destination</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="NY">New York</option>
-                        <option value="MD">Maryland</option>
-                        <option value="VA">Virginia</option>
-                    </select>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <div class="combobox-container">
+                        <div class="combobox-container">
+                            <input type="text" class="combobox form-control" placeholder="Destination" ng-model="selected" uib-typeahead="mall.Development for mall in homeCtrl.listOfMalls | filter:$viewValue | limitTo:8" name="destinationInput" required>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 form-group">
-                <div class="combobox-container">
-                    <select id="time" class="combobox form-control">
-                        <option>Now</option>
-                        <option value="PA">Pennsylvania</option>
-                        <option value="CT">Connecticut</option>
-                        <option value="NY">New York</option>
-                        <option value="MD">Maryland</option>
-                        <option value="VA">Virginia</option>
-                    </select>
+            <div class="row">
+                <div class="col-xs-12 form-group">
+                    <div class="combobox-container">
+                        <center><b>Departure time -</b> {{homeCtrl.hour}}:{{homeCtrl.minute}}</center>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 form-group text-center">
-                <button class="btn btn-success btn-block" id="search" ng-click="homeCtrl.beginSearch()"> BEGIN </button>
+            <div class="row">
+                <div class="col-xs-6 form-group">
+                    <div class="combobox-container">
+                        <select class="combobox form-control" ng-model="homeCtrl.hour" ng-options="time for time in homeCtrl.listOfHours" ng-click="homeCtrl.customTime = true" name="hourInput" required>
+                            <option value="" disabled selected>Hour</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-6 form-group">
+                    <div class="combobox-container">
+                        <select class="combobox form-control" ng-model="homeCtrl.minute" ng-options="time for time in homeCtrl.listOfMinutes" ng-click="homeCtrl.customTime = true" name="minuteInput" required>
+                            <option value="" disabled selected>Minute</option>
+                        </select>
+                    </div>
+                </div>
             </div>
-        </div>
+            <div class="row">
+                <div class="col-xs-12 form-group text-center">
+                    <div ng-show="searchForm.$invalid && searchForm.$submitted" class="errorColor">
+                        Please fill in all the fields
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 form-group text-center">
+                    <button class="btn btn-success btn-block" id="search" ng-click="homeCtrl.beginSearch(searchForm.$valid)"> SEARCH </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
+
 <!-- /container -->
 <footer id="footer" class="footer">
     <div class="container">

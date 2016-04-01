@@ -1,0 +1,64 @@
+<div id="header" class="blog-masthead" style="margin-bottom: 20px;">
+    <div class="container">
+        <nav class="blog-nav text-center">
+            <a class="blog-nav-item" href="#"><img src="assets/img/logo.png" class="logo"></a>
+        </nav>
+    </div>
+</div>
+<div id="content" class="container">
+    <!--<div class="row">
+        <div class="col-xs-1">
+            <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-level-down fa-rotate-270 fa-stack-1x fa-inverse"></i>
+                    </span>
+        </div>
+        <div class="col-xs-11">
+            <div class="combobox-container">
+                <input type="text" class="combobox form-control" placeholder="From">
+            </div>
+        </div>
+    </div>-->
+    <div class="row">
+        <div class="col-xs-1">
+            <span class="fa-stack fa-lg">
+                      <i class="fa fa-circle fa-stack-2x"></i>
+                      <i class="fa fa-map-marker fa-stack-1x fa-inverse"></i>
+                    </span>
+        </div>
+        <div class="col-xs-11">
+            <div class="combobox-container">
+                <input type="text" class="combobox form-control" placeholder="Destination" ng-model="mapCtrl.carpark.Development">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <!-- google map -->
+            <br/>
+            <ui-gmap-google-map center='mapCtrl.map.center' zoom='mapCtrl.map.zoom'>
+                <ui-gmap-markers models="mapCtrl.carparkMarkers" icon="mapCtrl.map.icon" coords="'self'">
+                    <ui-gmap-window coords="mapCtrl.carparkCoord" options="mapCtrl.windowOptions" show="true">
+                        <div><b>{{mapCtrl.carpark.Development}}</b><br/>
+                        Avg. Waiting Time: <b ng-class="{'longWait': mapCtrl.carpark.WaitTime >= 15, 'averageWait': mapCtrl.carpark.WaitTime >5 && mapCtrl.carpark.WaitTime <15, 'shortWait': mapCtrl.carpark.WaitTime <= 5}">{{mapCtrl.carpark.WaitTime}} mins</b><br/>
+                        Pricing: <b>${{mapCtrl.carpark.Price}} per hour</b>
+                        </div>
+                    </ui-gmap-window>
+                </ui-gmap-markers>
+            </ui-gmap-google-map>
+        </div>
+    </div>
+</div>
+<footer id="footer" class="footer">
+    <div class="container">
+        <p>© 2016 ParkingEZY, Inc.</p>
+    </div>
+</footer>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#from').combobox();
+        $('#to').combobox();
+        $('#time').combobox();
+    });
+</script>

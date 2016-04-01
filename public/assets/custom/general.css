@@ -52,3 +52,33 @@
         width: 100%;
     }
 }
+
+.dropdown-menu{
+    width: -moz-calc(100% - 28px);
+    width: -webkit-calc(100% - 28px);
+    width: calc(100% - 28px);
+}
+
+input.centralise {
+    text-align: center; 
+}
+
+.longWait {
+    color: red;
+}
+
+.averageWait {
+    color: darkorange;
+}
+
+.shortWait {
+    color: seagreen;
+}
+
+.angular-google-map-container { 
+    height: 500px; 
+}
+
+.errorColor {
+    color: red;
+}

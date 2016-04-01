@@ -5,7 +5,10 @@
 
 angular.module('parkingEzy', [
     'firebase',
-    'ui.router'
+    'ui.router',
+    'ui.bootstrap',
+    'uiGmapgoogle-maps',
+    'google.places'
   ])
     .config(function ($stateProvider, $urlRouterProvider) {
 
@@ -13,14 +16,46 @@ angular.module('parkingEzy', [
             .state('home', {
                 url: '/',
                 controller: 'HomeCtrl as homeCtrl',
-                templateUrl: 'home/home.html'
+                templateUrl: 'home/home.html',
+                resolve: {
+                    malls: function (Malls) {
+                        return Malls.getMalls().$loaded();
+                    }
+                }
             })
             .state('list', {
                 url: '/list',
-                templateUrl: 'list/list.html'
+                controller: 'ListCtrl as listCtrl',
+                templateUrl: 'list/list.html',
+                resolve: {
+                    malls: function (Malls) {
+                        return Malls.getMalls().$loaded();
+                    }
+                }
+            })
+            .state('map', {
+                url: '/map',
+                controller: 'MapCtrl as mapCtrl',
+                templateUrl: 'map/map.html',
+                params: {carPark: null},
+                resolve: {
+                    malls: function (Malls) {
+                        return Malls.getMalls().$loaded();
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/');
+
+    })
+
+    .config(function (uiGmapGoogleMapApiProvider) {
+
+        uiGmapGoogleMapApiProvider.configure({
+            key: 'AIzaSyCaXBV3pnvGrnkQKrpOXSXboD6iuyb0_Qk',
+            v: '3.20',
+            libraries: 'weather,geometry,visualization'
+        });
 
     })
 
