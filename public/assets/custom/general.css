@@ -82,3 +82,23 @@ input.centralise {
 .errorColor {
     color: red;
 }
+
+#footer {
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    /*margin-top: 0;*/
+}
+.wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+
+}
+
+@media only screen and (min-width: 768px) {
+    #footer{
+        margin-top: 80px;
+    }
+}
