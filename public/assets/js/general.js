@@ -17,7 +17,7 @@
 function adjustFooterMarginTop(){
       // var height = $(this).height() - $("#header").height() + $("#footer").height() - 35;
       var height = $(document).height() - ( $('#header').height() + $('#content').height() ) - $('#footer').height() - 50;
-      console.log(height);
+      // console.log(height);
       // $('#content').height(height);
       // $('#footer').height(height - 200);
       $('#footer').css('margin-top', height); // <-- set here

@@ -52,11 +52,12 @@ angular.module('parkingEzy', [
     .config(function (uiGmapGoogleMapApiProvider) {
 
         uiGmapGoogleMapApiProvider.configure({
-            key: 'AIzaSyCaXBV3pnvGrnkQKrpOXSXboD6iuyb0_Qk',
+            // key: 'AIzaSyCaXBV3pnvGrnkQKrpOXSXboD6iuyb0_Qk',
+            key: 'AIzaSyCKn9_sMdHyeeeOsscwxN_gM0H0-JCwBKw',
             v: '3.20',
             libraries: 'weather,geometry,visualization'
         });
 
     })
-
-    .constant('FirebaseUrl', 'https://parkingezy.firebaseio.com/');
+    // .constant('FirebaseUrl', 'https://parkingezy.firebaseio.com/');
+    .constant('FirebaseUrl', 'https://finalparkingezy.firebaseio.com/');

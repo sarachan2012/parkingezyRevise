@@ -1,42 +1,45 @@
-<div id="header" class="blog-masthead" style="margin-bottom: 20px;">
-    <div class="container">
-        <nav class="blog-nav text-center">
-            <a class="blog-nav-item" href="#"><img src="assets/img/logo.png" class="logo"></a>
-        </nav>
+<div class="wrapper">
+    <div id="header" class="blog-masthead" style="margin-bottom: 20px;">
+        <div class="container">
+            <nav class="blog-nav text-center">
+                <a class="blog-nav-item" href="#"><img src="assets/img/logo.png" class="logo"></a>
+            </nav>
+        </div>
     </div>
-</div>
-<div id="content" class="container">
-    <div class="row" ng-repeat="mall in listCtrl.listOfMalls">
-        <div class="col-xs-12">
-            <ul class="list-group unlisted event-list" style="list-style-type: none;">
-                <li>
-                    <div class="panel panel-default sharp-corner">
-                        <div class="panel-body" style="padding:10px;">
-                            <div class="col-xs-3 center-block" style="padding:0;">
-                                <img alt="Independence Day" ng-src="{{mall.Image}}" class="img-responsive  center-block" style="padding:0;padding-top:5px;padding-bottom:5px;" />
-                            </div>
-                            <div class="col-xs-9" style="">
-                                <h2 class="title" style="font-size: 16px;margin-top: 5px; font-weight:bold;"> {{mall.Development}} </h2>
-                                <p class="desc">
-                                    <strong> Address: </strong> 2 Orchard Turn, Singapore 238801
-                                </p>
-                                <p><i class="fa fa-clock-o" style="vertical-align: middle;"></i> <span style="font-weight: bold;">Avg. Waiting Time: </span>
-                                    <span ng-class="{'longWait': mall.WaitTime >= 15, 'averageWait': mall.WaitTime >5 && mall.WaitTime <15, 'shortWait': mall.WaitTime <= 5}">{{mall.WaitTime}} mins</span>
-                                </p>
-                                <p><i class="fa fa-usd" style="vertical-align: middle;"></i>
-                                    <span style="font-weight: bold;">Pricing:</span>
-                                    <span>${{mall.Price}} per hour</span>
-                                </p>
-                                <div class="list-select-btn" style="">
-                                    <button class="btn btn-success btn-block" ng-click="listCtrl.selectMall(mall)">Select</button>
+    <div id="content" class="container">
+        <div class="row" ng-repeat="mall in listCtrl.listOfMalls">
+            <div class="col-xs-12">
+                <ul class="list-group unlisted event-list" style="list-style-type: none;">
+                    <li>
+                        <div class="panel panel-default sharp-corner">
+                            <div class="panel-body" style="padding:10px;">
+                                <div class="col-xs-3 center-block" style="padding:0;">
+                                    <img alt="{{ mall.Image.substring(mall.Image.lastIndexOf('/') + 1) }}" ng-src="{{mall.Image}}" class="img-responsive  center-block" style="padding:0;padding-top:5px;padding-bottom:5px;" />
+                                </div>
+                                <div class="col-xs-9" style="">
+                                    <h2 class="title" style="font-size: 16px;margin-top: 5px; font-weight:bold;"> {{mall.Development}} </h2>
+                                    <p class="desc">
+                                        <strong> Address: </strong> {{ mall.Address }}
+                                    </p>
+                                    <p><i class="fa fa-clock-o" style="vertical-align: middle;"></i> <span style="font-weight: bold;">Avg. Waiting Time: </span>
+                                        <span ng-class="{'longWait': mall.WaitTime >= 15, 'averageWait': mall.WaitTime >5 && mall.WaitTime <15, 'shortWait': mall.WaitTime <= 5}">{{mall.WaitTime}} mins</span>
+                                    </p>
+                                    <p><i class="fa fa-usd" style="vertical-align: middle;"></i>
+                                        <span style="font-weight: bold;">Pricing:</span>
+                                        <span>${{mall.Price}} per hour</span>
+                                    </p>
+                                    <div class="list-select-btn" style="">
+                                        <button class="btn btn-success btn-block" ng-click="listCtrl.selectMall(mall)">Select</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
+    <div class="push"></div>
 </div>
 <!-- /container -->
 <footer id="footer" class="footer">

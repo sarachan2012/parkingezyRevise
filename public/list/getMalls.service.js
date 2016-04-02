@@ -7,7 +7,7 @@ angular.module('parkingEzy')
 
 .factory('Malls', function ($firebaseArray, $firebaseObject, FirebaseUrl) {
 
-    var mallRef = new Firebase(FirebaseUrl + '0');
+    var mallRef = new Firebase(FirebaseUrl + 'malls');
 
     return {
         getMalls: function () {

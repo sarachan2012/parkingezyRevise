@@ -12,13 +12,13 @@ angular.module('parkingEzy')
     mapCtrl.malls = malls;
     mapCtrl.carpark = $stateParams.carPark;
     
+
     console.log(mapCtrl.carpark);
     /**
      * @name: map
      * @type: variable
      * @description: google map
      */
-    
     try {
         mapCtrl.map = {
             center: {
@@ -43,6 +43,15 @@ angular.module('parkingEzy')
             latitude: mall.Latitude,
             longitude: mall.Longitude,
             showMarker: true,
+            /*events: {
+                click: function(e){
+                    var windows = searchCtrl.googlemap.getChildWindows();
+
+                    for (var i = 0; i < windows.length; i++){
+                        windows[i].hideWindow();
+                    }
+                }
+            },*/
             control: {}
         });
         
@@ -53,7 +62,7 @@ angular.module('parkingEzy')
     };
     
     mapCtrl.carparkCoord = {
-        latitude: mapCtrl.carpark.Latitude,
+        latitude: mapCtrl.carpark.Latitude + 0.0001,
         longitude: mapCtrl.carpark.Longitude
     };
     

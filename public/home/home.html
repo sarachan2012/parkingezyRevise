@@ -12,46 +12,44 @@
                 <div class="col-xs-12 text-center">
                     <div class="icon-wrapper" style="margin-bottom:20px;">
                         <i class="fa fa-car custom-icon">
-                                <span class="fix-editor">&nbsp;</span>
-                                </i>
+                            <span class="fix-editor">&nbsp;</span>
+                        </i>
                     </div>
                 </div>
             </div>
             <form name="searchForm" novalidate>
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        <div class="combobox-container">
-                            <input type="text" class="combobox form-control" placeholder="From" g-places-autocomplete ng-model="homeCtrl.from" name="fromInput" required>
+                        <div class="">
+                            <input type="text" class="form-control" placeholder="From" g-places-autocomplete ng-model="homeCtrl.from" name="fromInput" required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        <div class="combobox-container">
-                            <div class="combobox-container">
-                                <input type="text" class="combobox form-control" placeholder="Destination" ng-model="selected" uib-typeahead="mall.Development for mall in homeCtrl.listOfMalls | filter:$viewValue | limitTo:8" name="destinationInput" required>
-                            </div>
+                        <div class="">
+                            <input type="text" class="form-control" placeholder="Destination" ng-model="selected" uib-typeahead="mall.Development for mall in homeCtrl.listOfMalls | filter:$viewValue | limitTo:8" name="destinationInput" required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12 form-group">
-                        <div class="combobox-container">
+                        <div class="">
                             <center><b>Departure time -</b> {{homeCtrl.hour}}:{{homeCtrl.minute}}</center>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-6 form-group">
-                        <div class="combobox-container">
-                            <select class="combobox form-control" ng-model="homeCtrl.hour" ng-options="time for time in homeCtrl.listOfHours" ng-click="homeCtrl.customTime = true" name="hourInput" required>
+                        <div class="">
+                            <select class="form-control" ng-model="homeCtrl.hour" ng-options="time for time in homeCtrl.listOfHours" ng-click="homeCtrl.customTime = true" name="hourInput" required>
                                 <option value="" disabled selected>Hour</option>
                             </select>
                         </div>
                     </div>
                     <div class="col-xs-6 form-group">
-                        <div class="combobox-container">
-                            <select class="combobox form-control" ng-model="homeCtrl.minute" ng-options="time for time in homeCtrl.listOfMinutes" ng-click="homeCtrl.customTime = true" name="minuteInput" required>
+                        <div class="">
+                            <select class="form-control" ng-model="homeCtrl.minute" ng-options="time for time in homeCtrl.listOfMinutes" ng-click="homeCtrl.customTime = true" name="minuteInput" required>
                                 <option value="" disabled selected>Minute</option>
                             </select>
                         </div>

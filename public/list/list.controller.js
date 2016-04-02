@@ -10,7 +10,7 @@ angular.module('parkingEzy')
     var listCtrl = this;
     
     listCtrl.listOfMalls = malls;
-    
+    console.log(malls);
 
     /**
      * @name: selectMall
