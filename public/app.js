@@ -44,6 +44,16 @@ angular.module('parkingEzy', [
                         return Malls.getMalls().$loaded();
                     }
                 }
+            })            
+            .state('load', {
+                url: '/load',
+                controller: 'LoadCtrl as loadCtrl',
+                templateUrl: 'load/load.html',
+                resolve: {
+                    malls: function (Malls) {
+                        return Malls.getMalls().$loaded();
+                    }
+                }
             });
 
         $urlRouterProvider.otherwise('/');
@@ -59,6 +69,10 @@ angular.module('parkingEzy', [
             libraries: 'weather,geometry,visualization'
         });
 
+    })
+
+    .run(function(){
+        
     })
     // .constant('FirebaseUrl', 'https://parkingezy.firebaseio.com/');
     .constant('FirebaseUrl', 'https://finalparkingezy.firebaseio.com/');
