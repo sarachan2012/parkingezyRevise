@@ -7,7 +7,7 @@
         </div>
     </div>
     <div id="content" class="container">
-        <div class="row" ng-repeat="mall in listCtrl.listOfMalls | orderBy:'Area'">
+        <div class="row" ng-repeat="mall in listCtrl.listOfMalls | orderBy: ['WaitTime', 'Price']">
             <div class="col-xs-12">
                 <ul class="list-group unlisted event-list" style="list-style-type: none;">
                     <li>

@@ -9,20 +9,22 @@ angular.module('parkingEzy')
     
     var listCtrl = this;
     
-    listCtrl.listOfMalls = getMallsByArea;
+    listCtrl.listOfMalls = [];
     listCtrl.selectedDest = $stateParams.dest;
     // console.log(listCtrl.selectedDest.Area);
     // console.log(malls);
-    console.log(getMallsByArea);
 
-    /**
-     * @name: sortMallList
-     * @type: method
-     * @description: sort the mall list according to Area, waiting time, price
-     */
-    listCtrl.sortMallList = function(card) {
-        return card.values.opt1 + card.values.opt2;
-    }
+    var filter = [];
+    var rest = [];
+    angular.forEach(malls, function(mall) {
+        if (mall.Area == listCtrl.selectedDest.Area){
+            filter.push(mall);
+        }else{
+            rest.push(mall);
+        }
+    });
+
+    listCtrl.listOfMalls = filter;
     /**
      * @name: selectMall
      * @type: method
