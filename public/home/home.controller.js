@@ -5,12 +5,12 @@
 
 angular.module('parkingEzy')
 
-.controller('HomeCtrl', function ($state, $filter, $interval, $http, malls) {
+.controller('HomeCtrl', function ($state, $filter, $interval, $http, malls, Malls) {
 
     var homeCtrl = this;
 
     homeCtrl.listOfMalls = malls;
-    console.log(homeCtrl.listOfMalls);
+    // console.log(homeCtrl.listOfMalls);
     /**
      * @name: customTime, currentTime, hour, minute
      * @type: variable
@@ -27,7 +27,23 @@ angular.module('parkingEzy')
         }
     }, 1000);
 
-
+    function updateCarparkAvailability() {
+        // possible random number generated is from -5 to 5
+        angular.forEach(malls, function(mall){
+            var id = mall.$id;
+            var curr_lots = mall.Lots;
+            var rand_num = Math.floor(Math.random() * 10) - 5;
+            var new_lots_num = curr_lots + rand_num;
+            if (new_lots_num < 0){
+                new_lots_num = 0;
+            }else if (new_lots_num == 0){
+                new_lots_num = Math.floor((Math.random() * 10) + 1);
+            }
+            Malls.updateMallField(id, 'Lots', new_lots_num);
+        });
+    }
+    // update every 5 seconds
+    $interval(updateCarparkAvailability, 1000 * 5);
     /**
      * @name: listOfHours, listOfMinutes
      * @type: variable
@@ -37,8 +53,6 @@ angular.module('parkingEzy')
     homeCtrl.listOfHours = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24'];
 
     homeCtrl.listOfMinutes = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50', '51', '52', '53', '54', '55', '56', '57', '58', '59'];
-
-
     /**
      * @name: beginSearch
      * @type: method
@@ -55,7 +69,7 @@ angular.module('parkingEzy')
     //     homeCtrl.selectedDestination = site.$id;
     // };
     homeCtrl.beginSearch = function () {
-        console.log(homeCtrl.selectedDestination);
+        // console.log(homeCtrl.selectedDestination);
         // $state.go('list', {destination: homeCtrl.selectedDestination});
         $state.go('list', {dest: homeCtrl.selectedDestination});
     };

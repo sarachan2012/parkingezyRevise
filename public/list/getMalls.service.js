@@ -16,6 +16,10 @@ angular.module('parkingEzy')
         
         getMall: function (mallId) {
             return $firebaseArray(mallRef.child(mallId));
+        },
+
+        updateMallField: function(mallId, fieldName, value){
+            return mallRef.child(mallId).child(fieldName).set(value);
         }
     };
 
