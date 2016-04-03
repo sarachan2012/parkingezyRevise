@@ -5,7 +5,7 @@ angular.module('parkingEzy')
     var loadCtrl = this;
 
     loadCtrl.listOfMalls = malls;
-    console.log(loadCtrl.listOfMalls);
+    // console.log(loadCtrl.listOfMalls);
     function updateCarparkAvailability() {
         // possible random number generated is from -5 to 5
         angular.forEach(malls, function(mall){
@@ -23,6 +23,5 @@ angular.module('parkingEzy')
     }
     // update every 5 seconds
     $interval(updateCarparkAvailability, 1000 * 5);
-
 
 });

@@ -14,6 +14,20 @@
                 </div>
             </div>
         </div>
+<!--         <div class="row form-group">
+            <div class="col-xs-12">
+                <p> 
+                    <h3> Adjustment to the carpark availability by user </h3>
+                </p>
+                <button type="button" class="btn btn-success" ng-click="loadCtrl.userSelect()"> + </button>
+                <button type="button" class="btn btn-danger" ng-click="loadCtrl.userLeave()"> - </button>
+            </div>
+        </div> -->
+        <div class="row form-group">
+            <div class="col-xs-12">
+                <h3>List of shopping mall carpark: </h3>
+            </div>
+        </div>
         <div class="row" ng-repeat="mall in loadCtrl.listOfMalls | orderBy: ['Area', 'WaitTime', 'Price']">
             <div class="col-xs-12">
                 <ul class="list-group unlisted event-list" style="list-style-type: none;">
