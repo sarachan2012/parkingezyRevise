@@ -19,6 +19,16 @@ angular.module('parkingEzy')
                 new_lots_num = Math.floor((Math.random() * 10) + 1);
             }
             Malls.updateMallField(id, 'Lots', new_lots_num);
+
+            var curr_footfall = mall.Footfall;
+            var rand_num = Math.floor(Math.random() * 50) - 10;
+            var new_footfall_num = curr_lots + rand_num;
+            if (new_footfall_num < 0){
+                new_footfall_num = 0;
+            }else if (new_footfall_num == 0){
+                new_footfall_num = Math.floor((Math.random() * 10) + 1);
+            }
+            Malls.updateMallField(id, 'Footfall', new_footfall_num);
         });
     }
     // update every 5 seconds

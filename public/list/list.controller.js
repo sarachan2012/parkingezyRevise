@@ -16,9 +16,9 @@ angular.module('parkingEzy')
 
     var filter = [];
     var rest = [];
-    var currentTime = new Date();
-    var now_hour = $filter('date')(currentTime, 'HH');
-    var peak_hours_arr = [7,8,12,13,17,18,19,20];
+    // var currentTime = new Date();
+    // var now_hour = $filter('date')(currentTime, 'HH');
+    // var peak_hours_arr = [7,8,12,13,17,18,19,20];
     // console.log(now_hour);
     angular.forEach(malls, function(mall) {
         if (listCtrl.selectedDest.Area != "" && mall.Area == listCtrl.selectedDest.Area){
