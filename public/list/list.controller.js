@@ -49,6 +49,8 @@ angular.module('parkingEzy')
      * @description: user selects mall to park at
      */
     listCtrl.selectMall = function (mall) {
+        var update_lots = mall.Lots - 1;
+        Malls.updateMallField(mall.$id, 'Lots', update_lots);
         $state.go('map', {carPark: mall});
     };
 
