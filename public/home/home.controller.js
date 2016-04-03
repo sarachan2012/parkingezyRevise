@@ -10,8 +10,7 @@ angular.module('parkingEzy')
     var homeCtrl = this;
 
     homeCtrl.listOfMalls = malls;
-
-
+    console.log(homeCtrl.listOfMalls);
     /**
      * @name: customTime, currentTime, hour, minute
      * @type: variable
@@ -46,11 +45,20 @@ angular.module('parkingEzy')
      * @description: start searching for carpark availability once user enters search
      */
 
-    homeCtrl.beginSearch = function (isValid) {
-        if (isValid) {
-            $state.go('list');
-        }
-    }
+    // homeCtrl.beginSearch = function (isValid) {
+    //     if (isValid) {
+    //         $state.go('list');
+    //     }
+    // }
+    
+    // homeCtrl.setSelectedMall = function(site){
+    //     homeCtrl.selectedDestination = site.$id;
+    // };
+    homeCtrl.beginSearch = function () {
+        console.log(homeCtrl.selectedDestination);
+        // $state.go('list', {destination: homeCtrl.selectedDestination});
+        $state.go('list', {dest: homeCtrl.selectedDestination});
+    };
 
     /*var geocoder = new google.maps.Geocoder();
         geocoder.geocode( { "address": "Brussels" }, function(results, status) {

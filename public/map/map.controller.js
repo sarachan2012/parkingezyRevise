@@ -11,7 +11,7 @@ angular.module('parkingEzy')
     
     mapCtrl.malls = malls;
     mapCtrl.carpark = $stateParams.carPark;
-    
+    console.log($stateParams);
     console.log(mapCtrl.carpark);
     /**
      * @name: map

@@ -27,6 +27,7 @@ angular.module('parkingEzy', [
                 url: '/list',
                 controller: 'ListCtrl as listCtrl',
                 templateUrl: 'list/list.html',
+                params: {dest: null},
                 resolve: {
                     malls: function (Malls) {
                         return Malls.getMalls().$loaded();

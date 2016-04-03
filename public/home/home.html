@@ -17,7 +17,7 @@
                     </div>
                 </div>
             </div>
-            <form name="searchForm" novalidate>
+            <form name="searchForm" method="post" ng-submit="searchForm.$valid && homeCtrl.beginSearch()" novalidate >
                 <div class="row">
                     <div class="col-xs-12 form-group">
                         <div class="">
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-xs-12 form-group">
                         <div class="">
-                            <input type="text" class="form-control" placeholder="Destination" ng-model="selected" uib-typeahead="mall.Development for mall in homeCtrl.listOfMalls | filter:$viewValue | limitTo:8" name="destinationInput" required>
+                            <input type="text" class="form-control" placeholder="Destination" ng-model="homeCtrl.selectedDestination" uib-typeahead="mall as mall.Development for mall in homeCtrl.listOfMalls | filter:$viewValue | limitTo:8" name="destinationInput" required>
                         </div>
                     </div>
                 </div>
@@ -64,7 +64,7 @@
                 </div>
                 <div class="row">
                     <div class="col-xs-12 form-group text-center">
-                        <button class="btn btn-success btn-block" id="search" ng-click="homeCtrl.beginSearch(searchForm.$valid)"> SEARCH </button>
+                        <button class="btn btn-success btn-block" id="search" type="submit"> SEARCH </button>
                     </div>
                 </div>
             </form>
