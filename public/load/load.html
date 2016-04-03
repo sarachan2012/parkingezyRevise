@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-xs-12">
                 <div class="alert alert-info">
-                  <strong>Note:</strong> You have activate the simulation for carpark availability.
+                  <strong>Note:</strong> Hit 'F5' to refresh the page and update the carpark availability.
                 </div>
             </div>
         </div>
@@ -44,6 +44,11 @@
                                     </p>
                                     <p><i class="fa fa-clock-o" style="vertical-align: middle;"></i> <span style="font-weight: bold;">Avg. Waiting Time: </span>
                                         <span ng-class="{'longWait': mall.WaitTime >= 15, 'averageWait': mall.WaitTime >5 && mall.WaitTime <15, 'shortWait': mall.WaitTime <= 5}">{{mall.WaitTime}} mins</span>
+                                    </p>
+                                    <p>
+                                        <i class="fa fa-car" style="vertical-align: middle;"></i>
+                                        <span style="font-weight: bold;"> Carpark Availability: </span>
+                                        <span> {{ mall.Lots }} </span>
                                     </p>
                                     <p><i class="fa fa-usd" style="vertical-align: middle;"></i>
                                         <span style="font-weight: bold;">Pricing:</span>

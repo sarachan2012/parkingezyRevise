@@ -22,6 +22,6 @@ angular.module('parkingEzy')
         });
     }
     // update every 5 seconds
-    $interval(updateCarparkAvailability, 1000 * 5);
-
+    // $interval(updateCarparkAvailability, 1000 * 5);
+    updateCarparkAvailability();
 });
