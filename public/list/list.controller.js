@@ -5,7 +5,7 @@
 
 angular.module('parkingEzy')
 
-.controller('ListCtrl',  function (malls, getMallsByArea, $stateParams, $state) {
+.controller('ListCtrl',  function (malls, $stateParams, $state) {
     
     var listCtrl = this;
     
