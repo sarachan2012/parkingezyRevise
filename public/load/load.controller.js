@@ -11,6 +11,7 @@ angular.module('parkingEzy')
       accessKeyId: '<put access key id>',
       secretAccessKey: '<put secret access key>'
     });
+
     
     // console.log(loadCtrl.listOfMalls);
     function updateCarparkAvailability() {
