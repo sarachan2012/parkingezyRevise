@@ -14,6 +14,7 @@ angular.module('parkingEzy')
 
     // console.log(loadCtrl.listOfMalls);
     function updateCarparkAvailability() {
+        var default_carpark_lots = 650;
         // possible random number generated is from -5 to 5
         angular.forEach(malls, function(mall){
             var id = mall.$id;
@@ -23,7 +24,9 @@ angular.module('parkingEzy')
             if (new_lots_num < 0){
                 new_lots_num = 0;
             }else if (new_lots_num == 0){
-                new_lots_num = Math.floor((Math.random() * 10) + 1);
+                new_lots_num = Math.floor((Math.random() * 10) + 3);
+            }else if (new_lots_num > default_carpark_lots){
+                new_lots_num = 650 - Math.floor((Math.random() * 10) + 3);
             }
            
            Malls.updateMallField(id, 'Lots', new_lots_num);

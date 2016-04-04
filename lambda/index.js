@@ -1,22 +1,3 @@
-/*
-exports.handler = function(event, context) {
-
-    var id = event.id;
-    var avgduration = event.avgduration;
-    var new_lots_num = event.new_lots_num;
-    var waittime = 0;
-    var inverseLots = 1;
-
-    if (new_lots_num > 0){
-        inverseLots = 1 / new_lots_num;
-    }
-
-    waittime = Math.round(avgduration * inverseLots);
-
-    // return to the results to the application
-    context.succeed({'id' : id, 'waittime': waittime});
-};
-*/
 exports.handler = function(event, context) {
 
     var id = event.id;
@@ -40,7 +21,11 @@ exports.handler = function(event, context) {
     if (peak_hours_arr.indexOf(parseInt(now_hour)) < 0) {
         addTime = normal_waiting_hours;
     }else{
-        addTime = peak_waiting_hours;
+        if (new_lots_num >= 100){
+            addTime = normal_waiting_hours;
+        }else{
+            addTime = peak_waiting_hours;
+        }
     }
     if (new_lots_num <= 10){
         addTime = peak_waiting_hours;
@@ -263,3 +248,24 @@ exports.handler = function(event, context) {
     // return to the results to the application
     context.succeed({'id' : id, 'waittime': waittime});
 };
+
+
+/*
+exports.handler = function(event, context) {
+
+    var id = event.id;
+    var avgduration = event.avgduration;
+    var new_lots_num = event.new_lots_num;
+    var waittime = 0;
+    var inverseLots = 1;
+
+    if (new_lots_num > 0){
+        inverseLots = 1 / new_lots_num;
+    }
+
+    waittime = Math.round(avgduration * inverseLots);
+
+    // return to the results to the application
+    context.succeed({'id' : id, 'waittime': waittime});
+};
+*/

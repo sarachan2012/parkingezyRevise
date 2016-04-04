@@ -20,7 +20,6 @@ angular.module('parkingEzy')
       secretAccessKey: '<put secret access key>'
     });
 
-
     
     var filter = [];
     var rest = [];
