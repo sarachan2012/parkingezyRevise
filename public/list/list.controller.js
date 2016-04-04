@@ -14,6 +14,13 @@ angular.module('parkingEzy')
     // console.log(listCtrl.selectedDest.Area);
     // console.log(malls);
 
+    var lambda = new AWS.Lambda({
+      region: "us-west-2",
+      accessKeyId: '<put access key id>',
+      secretAccessKey: '<put secret access key>'
+    });
+    
+
     var filter = [];
     var rest = [];
     // var currentTime = new Date();
@@ -35,6 +42,22 @@ angular.module('parkingEzy')
             //     waitTime = peak_waiting_hours;
             // }
             // Malls.updateMallField(mall.$id, 'WaitTime', waitTime);
+            var id = mall.$id;
+            var new_lots_num = mall.Lots;
+            var avgduration = mall.AverageDuration;
+            lambda.invoke({
+                FunctionName: "testlapa",
+                Payload: JSON.stringify({"id": id, 'avgduration': avgduration, 'new_lots_num': new_lots_num })
+                }, function(err, data) {
+                    if(!err){
+                        var result = JSON.parse(data.Payload);
+                        console.log(result);
+                        Malls.updateMallField(id, 'WaitTime', result.waittime);
+                    } else{
+                        console.log("err: " + err);
+                    }
+            });
+
             filter.push(mall);
         }else{
             rest.push(mall);
