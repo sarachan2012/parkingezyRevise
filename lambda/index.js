@@ -66,7 +66,7 @@ exports.handler = function(event, context) {
     
        if (x >= 0)  t = 1-t;
        return t;
-       }
+    }
     function BinomialPF( p, n, k ) {
        // by Normal approximation }
        // Peizer & Pratt 1968, JASA 63: 1416-1456
@@ -91,29 +91,28 @@ exports.handler = function(event, context) {
           }
     
        return z;
-       }
+    }
     function BinomialP( p, n, k ) {
        if (n >= 1000)  return BinomialPF( p, n, k );
        else {
-          // term-by-term
-          if ((k > n) || (p >= 1))  return 1;
-          else {
-             var  q = 1 - p;
-             var  n1p = (n+1) * p;
-    
-             var  t = n * Math.log(q);  // k = 0
-             var  r = Math.exp(t);
-             var  j = 1;
-             while (j <= k) {
-                t += Math.log( 1 + (n1p - j) / (j * q) );
-                r += Math.exp(t);
-                j++;
+            // term-by-term
+            if ((k > n) || (p >= 1))  return 1;
+            else {
+                var  q = 1 - p;
+                var  n1p = (n+1) * p;
+        
+                var  t = n * Math.log(q);  // k = 0
+                var  r = Math.exp(t);
+                var  j = 1;
+                while (j <= k) {
+                    t += Math.log( 1 + (n1p - j) / (j * q) );
+                    r += Math.exp(t);
+                    j++;
                 }
-    
-             return  r;
-             }
-          }
-       }
+                return  r;
+            }
+        }
+    }
     
     function Fact( x ) {
        // x factorial
@@ -121,36 +120,36 @@ exports.handler = function(event, context) {
        while (x > 1)
           t *= x--;
        return t;
-       }
+    }
     function LnFact( x ) {
-    // ln(x!) by Stirling's formula
-    //   see Knuth I: 111
-    if (x <= 1)  x = 1;
-    
-    if (x < 12)
-       return Math.log( Fact(Math.round(x)) );
-    else {
-       var invx = 1 / x;
-       var invx2 = invx * invx;
-       var invx3 = invx2 * invx;
-       var invx5 = invx3 * invx2;
-       var invx7 = invx5 * invx2;
-    
-       var sum = ((x + 0.5) * Math.log(x)) - x;
-       sum += Math.log(2*Math.PI) / 2;
-       sum += (invx / 12) - (invx3 / 360);
-       sum += (invx5 / 1260) - (invx7 / 1680);
-    
-       return sum;
-       }
+        // ln(x!) by Stirling's formula
+        //   see Knuth I: 111
+        if (x <= 1)  x = 1;
+        
+        if (x < 12)
+           return Math.log( Fact(Math.round(x)) );
+        else {
+           var invx = 1 / x;
+           var invx2 = invx * invx;
+           var invx3 = invx2 * invx;
+           var invx5 = invx3 * invx2;
+           var invx7 = invx5 * invx2;
+        
+           var sum = ((x + 0.5) * Math.log(x)) - x;
+           sum += Math.log(2*Math.PI) / 2;
+           sum += (invx / 12) - (invx3 / 360);
+           sum += (invx5 / 1260) - (invx7 / 1680);
+        
+           return sum;
+        }
     }
     function LnComb( n, k ) {
        if ((k == 0) || (k == n))  return 0;
        else
-          if ((k > n) || (k < 0))  return -1E38;
-          else
-             return  (LnFact(n) - LnFact(k) - LnFact(n-k));
-       }
+            if ((k > n) || (k < 0))  return -1E38;
+            else
+                return  (LnFact(n) - LnFact(k) - LnFact(n-k));
+   }
     function BinomTerm( p, n, k ) {
        // for success probability p and n trials
        //     probability of exactly k successes
@@ -160,87 +159,86 @@ exports.handler = function(event, context) {
     }
     
     function Prb( x ) {
-       if (x < 0)  x = 0;
-       else
-          if (x > 1)  x = 1;
-       return x;
+        if (x < 0)  x = 0;
+        else
+            if (x > 1)  x = 1;
+        return x;
     }
     function PosV( x ) {
        if (x < 0)  x = -x;
        return x;
     }
     function Fixed( s, wid, dec ) {
-       // many combinations of possibilities
-    
-       // maybe prepare for upcoming truncate
-       var z = 1
-       if (dec > 0) {
+        // many combinations of possibilities
+        // maybe prepare for upcoming truncate
+        var z = 1
+        if (dec > 0) {
           z /= Math.pow( 10, dec );
           if (s < -z)  s -= 0.5 * z;
           else
              if (s > z)  s += 0.5 * z;
              else
                 s = 0;
-          }
+        }
     
-       // assure a string
-       s = "" + s;
+        // assure a string
+        s = "" + s;
     
-       // chop neg, if any
-       var neg = 0;
-       if (s.charAt(0) == "-") {
+        // chop neg, if any
+        var neg = 0;
+        if (s.charAt(0) == "-") {
           neg = 2;
           s = s.substring( 1, s.length );
-          }
+        }
     
-       // chop exponent, if any
-       var exp = "";
-       var e = s.lastIndexOf( "E" );
-       if (e < 0)  e = s.lastIndexOf( "e" );
-       if (e > -1) {
-          exp = s.substring( e, s.length );
-          s = s.substring( 0, e );
-          }
+        // chop exponent, if any
+        var exp = "";
+        var e = s.lastIndexOf( "E" );
+        if (e < 0)  e = s.lastIndexOf( "e" );
+        if (e > -1) {
+            exp = s.substring( e, s.length );
+            s = s.substring( 0, e );
+        }
     
-       // if dec > 0 assure "."; dp == index of "."
-       var dp = s.indexOf( ".", 0 );
-       if (dp == -1) {
-          dp = s.length;
-          if (dec > 0) {
-             s += ".";
-             dp = s.length - 1;
-             }
-          }
+        // if dec > 0 assure "."; dp == index of "."
+        var dp = s.indexOf( ".", 0 );
+        if (dp == -1) {
+            dp = s.length;
+            if (dec > 0) {
+                s += ".";
+                dp = s.length - 1;
+            }
+        }
     
-       // assure leading digit
-       if (dp == 0) {
-          s = '0' + s;
-          dp = 1;
-          }
+        // assure leading digit
+        if (dp == 0) {
+            s = '0' + s;
+            dp = 1;
+        }
     
-       // not enough dec pl?  add 0's
-       while ((dec > 0) && ((s.length - dp - 1) < dec))
-          s += "0";
+        // not enough dec pl?  add 0's
+        while ((dec > 0) && ((s.length - dp - 1) < dec))
+            s += "0";
     
-       // too many dec pl?  take a substring
-       var places = s.length - dp - 1;
-       if (places > dec)
-          if (dec == 0)
-             s = s.substring( 0, dp );
-          else
-             s = s.substring( 0, dp + dec + 1 );
+        // too many dec pl?  take a substring
+        var places = s.length - dp - 1;
+        if (places > dec)
+            if (dec == 0)
+                s = s.substring( 0, dp );
+            else
+                s = s.substring( 0, dp + dec + 1 );
     
-       // recover exponent, if any
-       s += exp;
+        // recover exponent, if any
+        s += exp;
     
-       // recover neg, if any
-       if (neg > 0)
-          s = "-" + s;
+        // recover neg, if any
+        if (neg > 0)
+            s = "-" + s;
     
-       // if not enough width, add spaces IN FRONT
-       //    too many places?  tough!
-       while (s.length < wid)
-          s = " " + s;
+        // if not enough width, add spaces IN FRONT
+        //    too many places?  tough!
+        while (s.length < wid)
+            s = " " + s;
     
        return s
     }
